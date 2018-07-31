@@ -1,0 +1,153 @@
+<div class="img_content">
+
+</div>
+
+<div class="container_fluid" (click)="closeContainerSelect($event)">
+
+  <div class="container container_fluid__item">
+    <div class="row container_fluid_content">
+
+      <div class="body my-auto">
+        <div class="row body_row">
+
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 container_title center">
+            <div class="container container_title_content">
+              <h1 class="title">Welcome to the Biggest Social Network in the World</h1>
+              <p class="my-5 text">We are the best and biggest social network with 5 billion active users all around the world. Share you thoughts, write blog posts, show your favourite music via Stopify, earn badges and much more!</p>
+              <button class="btn btn-outline-success lg my-2 my-sm-0" type="submit" (click)="showContainer(2)"> <strong>Register Now!</strong> </button>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 container_form center">
+            <div class="container px-0 container_form_content center">
+              <div class="content_form">
+                <div class="container_left">
+                  <div class="opt center" (click)="showContainer(1)" [ngClass]="{'opt_activated': containers.login}"> <i class="fa fa-power-off icon_login"></i> </div>
+                  <div class="opt center" (click)="showContainer(2)" [ngClass]="{'opt_activated': containers.register}"> <i class="fa fa-power-off icon_register"></i> </div>
+                </div>
+                <div class="container_right">
+
+                  <div class="container_login" *ngIf="containers.login">
+                    <header class="header header_login"> <strong>Iniciar Sesión</strong> </header>
+                    <div class="content p-3 content_form_login">
+                      <div class="row row_form_login">
+                        <div class="col-12 col_form_login">
+                          <div class="form-group label-floating is-empty container_email" [ngClass]="{'is-focused': user.email || focusInputsLogin.email}">
+                            <label class="control-label placeholder_email">Tu Correo</label>
+                            <input class="form-control input_email" type="email" [(ngModel)]="user.email" (focus)="focusInputsLogin.email = true" (blur)="focusInputsLogin.email = false">
+                            <span class="material-input" *ngIf="dataErrorUser.email">Campo No Valido</span>
+                          </div>
+                          <div class="form-group label-floating is-empty container_password" [ngClass]="{'is-focused': user.password || focusInputsLogin.password}">
+                            <label class="control-label placeholder_password">Tu Contraseña</label>
+                            <input class="form-control input_password" type="password" [(ngModel)]="user.password" (focus)="focusInputsLogin.password = true" (blur)="focusInputsLogin.password = false">
+                            <span class="material-input" *ngIf="dataErrorUser.password">Campo No Valido</span>
+                          </div>
+                          <div class="remember">
+                            <div class="checkbox">
+                              <label class="center">
+                                <input class="optionsCheckboxes" type="checkbox" [checked]="focusInputsLogin.rememberMe" (change)="focusInputsLogin.rememberMe = !focusInputsLogin.rememberMe">
+                                <span class="checkbox-material">Recordarme</span>
+                              </label>
+                            </div>
+                            <a href="#" class="forgot">Recordar Contraseña</a>
+                          </div>
+                          <a href="#" class="btn btn-lg full-width py-3 btn_login" (click)="LoginUser()">Iniciar Sesión</a>
+                          <div class="or"></div>
+                          <a href="#" class="btn btn-lg btn-facebook full-width btn-icon-left py-3 btn_login_facebbok">
+                            <svg class="svg-inline--fa fa-facebook-f fa-w-9" aria-hidden="true" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" data-fa-i2svg=""><path fill="currentColor" d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229"></path></svg>
+                            Iniciar Sesión Con Facebook
+                          </a>
+                          <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left py-3 my-3 btn_login_twitter">
+                            <svg class="svg-inline--fa fa-twitter fa-w-16" aria-hidden="true" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+                            Iniciar Sesión Con Twitter
+                          </a>
+                          <p class="footer_text_login">
+                            ¿No tienes una cuenta?
+                            <a href="#"> ¡Regístrate ahora! </a>
+                            ¡es realmente simple y puedes comenzar a disfrutar de todos los beneficios!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container_register" *ngIf="containers.register">
+                    <header class="header header_register"> <strong>Registrarse En La Red Social</strong> </header>
+                    <div class="content p-3 content_form_register">
+                      <div class="row row_form_register">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group label-floating is-empty container_email" [ngClass]="{'is-focused': newUser.name || focusInputsRegister.name}">
+                              <label class="control-label placeholder_email">Nombre</label>
+                              <input class="form-control input_email" type="text" [(ngModel)]="newUser.name" (focus)="focusInputsRegister.name = true" (blur)="focusInputsRegister.name = false">
+                              <span class="material-input" *ngIf="dataErrorNewUser.name">Campo No Valido</span>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group label-floating is-empty container_password" [ngClass]="{'is-focused': newUser.lastName || focusInputsRegister.lastName}">
+                              <label class="control-label placeholder_password">Apellido</label>
+                              <input class="form-control input_password" type="text" [(ngModel)]="newUser.lastName" (focus)="focusInputsRegister.lastName = true" (blur)="focusInputsRegister.lastName = false">
+                              <span class="material-input" *ngIf="dataErrorNewUser.lastName">Campo No Valido</span>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group label-floating is-empty container_password" [ngClass]="{'is-focused': newUser.email || focusInputsRegister.email}">
+                              <label class="control-label placeholder_password">Tu Correo</label>
+                              <input class="form-control input_password" type="email" [(ngModel)]="newUser.email" (focus)="focusInputsRegister.email = true" (blur)="focusInputsRegister.email = false">
+                              <span class="material-input" *ngIf="dataErrorNewUser.email">Campo No Valido</span>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group label-floating is-empty container_password" [ngClass]="{'is-focused': newUser.password || focusInputsRegister.password}">
+                              <label class="control-label placeholder_password">Tu Contraseña</label>
+                              <input class="form-control input_password" type="password" [(ngModel)]="newUser.password" (focus)="focusInputsRegister.password = true" (blur)="focusInputsRegister.password = false">
+                              <span class="material-input" *ngIf="dataErrorNewUser.password">Campo No Valido</span>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group label-floating is-empty is-focused container_password">
+                              <label class="control-label placeholder_password">Fecha de Nacimiento</label>
+                              <input class="form-control input_password" type="text" disabled value="{{newUser.birthday}}">
+                              <i class="far fa-calendar-alt icon_calendar"></i>
+                            </div>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group label-floating is-empty is-focused container_gender">
+                              <label class="control-label placeholder_password">Genero</label>
+                              <label class="form-control input_gender">{{textGenderSelect}}</label>
+                              <i class="fa fa-angle-down icon_select" (click)="changeStateContainerSelect(true)"></i>
+                              <div class="container_options_select" [ngClass]="{'container_options_select_activated': stateContainerSelect}">
+                                <a class="opt__item center" [ngClass]="{'opt__item_activated': newUser.gender == 1}" (click)="changeOptionGenderSelect(1, 'Masculino')">Masculino</a>
+                                <a class="opt__item center" [ngClass]="{'opt__item_activated': newUser.gender == 2}" (click)="changeOptionGenderSelect(2, 'Femenino')">Femenino</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="remember">
+                            <div class="checkbox">
+                              <label class="center">
+                                <input class="optionsCheckboxes" type="checkbox" [checked]="acceptTermsAndConditions" (change)="acceptTermsAndConditions = !acceptTermsAndConditions">
+                                <span class="checkbox-material">
+                                  <p class="footer_text_login m-0" [ngClass]="{'footer_text_login_error': dataErrorNewUser.acceptTermsAndConditions}">
+                                    Acepto los
+                                    <a href="#"> Terminos y Condiciones </a>
+                                    de este sitio Web
+                                  </p>
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                          <a href="#" class="btn btn-lg full-width py-3 btn_register" (click)="registerNewUser()">Completar Registro!</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
